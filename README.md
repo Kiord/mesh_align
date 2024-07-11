@@ -4,7 +4,7 @@ A tool for rigid mesh alignment written in Python.
 
 ## Usage
 
-`python mesh_align source.obj target.obj -tp source2target.npy, -tmp source2target.obj`
+`python mesh_align source.obj target.obj -tp source2target.npy -tmp source2target.obj`
 
 ## Notes
 
