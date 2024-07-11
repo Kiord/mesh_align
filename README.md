@@ -7,7 +7,7 @@ https://github.com/user-attachments/assets/8f5eb941-9a9d-435a-9025-8ff0b2971220
 
 ## Usage
 
-`python mesh_align source.obj target.obj -tp source2target.npy -tmp source2target.obj`
+`python mesh_align.py source.obj target.obj -tp source2target.npy -tmp source2target.obj -tref`
 
 ## Notes
 
@@ -21,8 +21,10 @@ This tool uses a coarse-to-fine algorithm:
   - The source mesh is scaled and centered like the target mesh
 - Coarse ICP phase
   - Based on the transform from the initial guess
-  - Many ICP instances are performed with few sampled points and few iterations.
-    - Reflections and rotations can optionally be tested during this phase.
+  - ICP instances are performed with few sampled points and few iterations
+  - Transformation combintations can be tested
+    - Test reflections (7 combinations)
+    - Test rotations (9 combinations)
 - Fine ICP phase
   - Based on the transform from the coarse ICP phase
   - A single ICP instance is performed with more sampled points and more iterations.
@@ -35,6 +37,12 @@ Type `python mesh_align --help` for a description of each input/parameter.
 ### Outlier ratio
 
 To account for outliers, we use the outlier ratio method with the option `-o`, which is the **most important parameter**.  This is usually easier to manage than a distance threshold, but it depends on the data. `-o 0.5` will count the 50% worst point matches as outliers. 
+
+### Reflections and rotations testing
+
+In the coarse phase, the flags `-tref` and `-trot` enable the testing of multiple reflections and rotation, respectively. This helps ensure that we start with a decent solution for the fine phase.
+In the embedded example, the source mesh has been mirrored, so adding -tref is mandatory.
+
 
 ### Fixed scale
 
