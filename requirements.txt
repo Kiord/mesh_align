@@ -4,4 +4,3 @@ scipy
 click
 pyvista
 tqdm
-matplotlib
