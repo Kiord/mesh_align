@@ -2,8 +2,7 @@
 
 A tool for rigid mesh alignment written in Python.
 
-
-[![Watch the video]](https://raw.githubusercontent.com/Kiord/mesh_align/main/images/video.mp4)
+https://github.com/user-attachments/assets/8f5eb941-9a9d-435a-9025-8ff0b2971220
 
 
 ## Usage
