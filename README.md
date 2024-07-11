@@ -2,6 +2,10 @@
 
 A tool for rigid mesh alignment written in Python.
 
+
+[![Watch the video]](https://raw.githubusercontent.com/Kiord/mesh_align/main/images/video.mp4)
+
+
 ## Usage
 
 `python mesh_align source.obj target.obj -tp source2target.npy -tmp source2target.obj`
