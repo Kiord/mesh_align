@@ -1,0 +1,7 @@
+numpy
+trimesh
+scipy
+click
+pyvista
+tqdm
+matplotlib
