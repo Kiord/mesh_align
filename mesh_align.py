@@ -6,7 +6,6 @@ from trimesh.registration import procrustes
 from trimesh.proximity import closest_point
 from tqdm import tqdm
 from scipy.spatial import cKDTree
-import matplotlib.pyplot as plt
 
 def get_centroid_scale(mesh_or_pointcloud):
     if isinstance(mesh_or_pointcloud, tm.PointCloud):
@@ -86,6 +85,7 @@ def icp(source_mesh,
     all_p_dist_record = []
     best_of_all_cost = np.inf
     best_of_all_transform = np.eye(4)
+    
     for cube in tqdm(cubes, total=len(cubes), ascii=True):
         transform = cube
         best_cost = np.inf
@@ -143,8 +143,6 @@ def icp(source_mesh,
             best_p_dist_record = p_dist_record
 
     if plot:
-        # plt.plot(all_cost_record)
-        # plt.show()
 
         pv_q = pv.PolyData(source_points)
         pv_q['scalars'] = np.zeros(len(source_points))
