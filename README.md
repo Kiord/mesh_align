@@ -7,7 +7,11 @@ https://github.com/user-attachments/assets/8f5eb941-9a9d-435a-9025-8ff0b2971220
 
 ## Usage
 
-`python mesh_align.py source.obj target.obj -tp source2target.npy -tmp source2target.obj -tref`
+`python mesh_align.py <path to source mesh> <path to target mesh> -tp <path to write the 4x4 transform matrix> -tmp <path to write the transformed source mesh>`
+
+example:
+
+`python mesh_align.py meshes/source.obj meshes/target.obj -tp results/source2target.npy -tmp results/source2target.obj -tref`
 
 ## Notes
 
