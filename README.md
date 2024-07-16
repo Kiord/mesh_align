@@ -16,7 +16,20 @@ example:
 ## Notes
 
 
-This tool is based on the Iterative Closest Point (ICP) algorithm. At each iteration, we look for the best rigid transform that aligns the source mesh on the target mesh. As a greedy algorithm, ICP is very sensitive to the data, the initial guess and the management of outliers. Depending on your scenario, you may want to tweak the parameters to increase robustness or speed.
+This tool is based on the Iterative Closest Point (ICP) algorithm. At each iteration, we look for the best rigid transform that aligns the source mesh on the target mesh. As a greedy algorithm, ICP is very sensitive to the data, the initial guess and the management of outliers. Depending on your scenario, you may want to tweak the parameters to increase robustness or speed. 
+This implementation shares similarities with Trimesh's `registration.mesh_other` procedure, but has the following differences:
+- Management of outliers
+  - This algorithm uses the outlier ratio rule for more robustness with noisy/incomplete data
+  - `trimesh.registration.mesh_other` does not manage outliers
+- Scaling factor clamping
+  - This algorithm clamps the scaling factor to avoid wrong convergence by excessive shrinking/enlarging
+  - `trimesh.registration.mesh_other` does not constrain the scaling factor
+- Rotations testing
+  - This algorithms (can) test for 9 axis-aligned rotations in addition to the 7 reflections in the coarse phase
+  - `trimesh.registration.mesh_other` does not test rotations in the coarse phase
+- Modularity
+  - This tool only aligns Trimesh objects
+  - `trimesh.registration.mesh_other` adapts to more data structures
 
 ## Coarse-to-fine
 This tool uses a coarse-to-fine algorithm:
